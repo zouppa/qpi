@@ -33,8 +33,18 @@ You can get QPi in 2 different way
 Prep
 
 ```sh
-pi@raspberrypi:~ $ sudo raspi-config
+sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 ```
-
+## Templates
 
 - [QPi](https://github.ibm.com/qpi/qpi) - QPi 
+
+## Table
+
+| T1 | T2 |
+| ------ | ------ |
+| 1 | test |
+| 2 | test |
+| 3  | test |
+| 4 | test |
+
