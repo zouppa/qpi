@@ -17,7 +17,7 @@ To build a QPi you will need:
 - Raspberry Pi 4
 - Power Supply for the Raspberry Pi
 - Micro SD card with at least 8GB of storage
-- 5 inch screen (or bigger)
+- 5 inch screen (or bigger) [Like This one](https://es.aliexpress.com/item/4000285089550.html?spm=a2g0s.9042311.0.0.532063c0x1I59N)
 - Ready to use holo pyramid (or you can build your own)
 - [Optional] Raspberry Pi Battery Hat 
 - [Optional] 3D printer 
@@ -45,6 +45,8 @@ sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 ## Templates
 
 - [QPi](https://github.ibm.com/qpi/qpi) - QPi 
+
+
 
 ## Table
 
