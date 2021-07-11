@@ -1,12 +1,11 @@
 # QPI
 ## _Using Holo to better understand Quantum_
 
-[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://github.ibm.com/qpi/qpi)
+[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
-<a href="https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list"" title="Link Title"><img src="{image-url}" alt="Alternate Text" /></a>
+Please feel free to watch the video :
 
-<iframe src="https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
-
+[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/video.png)](https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list")
 
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Bloch Sphere from different views.
