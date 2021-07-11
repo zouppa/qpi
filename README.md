@@ -3,6 +3,12 @@
 
 [![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://github.ibm.com/qpi/qpi)
 
+<a href="https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list"" title="Link Title"><img src="{image-url}" alt="Alternate Text" /></a>
+
+<iframe src="https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+
+
+
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Bloch Sphere from different views.
 
 To build a QPi you will need:
