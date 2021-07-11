@@ -9,8 +9,8 @@ Please feel free to watch the demo video :
 
 [![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
+  <iframe src="https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
 
-![](https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list%22)
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Bloch Sphere from different views.
 
@@ -194,7 +194,7 @@ This tutorial is inspired, and use the knowlodges from :
     
     Then login using pi user and password 
 
-    [![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)]
+    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)
 
     You can go ahead and test that Qiskit is runing on JupyterHub, by creating a new Python 3 file 
 
