@@ -50,7 +50,7 @@ This tutorial is inspired, and use the knowlodges from :
     -[SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/) 
 
     -[Set Up a Headless Raspberry Pi](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
--
+
 1. Connect using SSH to RPi and Update the OS 
     ```sh
     sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
