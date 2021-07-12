@@ -61,6 +61,19 @@ This tutorial is inspired, and use the knowlodges from :
     pi@qpi:~ $ sudo /etc/init.d/dphys-swapfile stop
     pi@qpi:~ $ sudo /etc/init.d/dphys-swapfile start
     ```
+
+1. <span style="color:red"> *Optional* </span>  Installing and configuring the screen
+
+    Please refer to the tutorial related to your screen manufucturer. In our case we are using a 5 inch HDMI capacitive screen. 
+    ```sh
+    pi@qpi:~ $ git clone https://github.com/goodtft/LCD-show.git
+    pi@qpi:~ $ cd LCD-show/
+    pi@qpi:~ $ sudo ./LCD5-show
+    ```
+1. Disable the screen save 
+    Please find here different way to [disable the screensave](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
+
+
 1. Configure the RPI to use Python 3 
     ```sh
     pi@qpi:~ $ sudo rm /usr/bin/python 
@@ -110,10 +123,11 @@ This tutorial is inspired, and use the knowlodges from :
     pi@qpi:~ $ curl -o get_rustup.sh -s https://sh.rustup.rs
     pi@qpi:~ $ sudo sh ./get_rustup.sh -y
     pi@qpi:~ $ sudo -H pip install --prefer-binary retworkx
+    pi@qpi:~ $ sudo -H pip install --prefer-binary cvxpy
     ```
     Installing libcint, pyscf and cython
     ```sh
-    pi@qpi:~ $ sudo apt -y install cmake libatlas-base-dev git
+    pi@qpi:~ $ sudo apt -y install cmake libatlas-base-dev git feh unclutter
     pi@qpi:~/qpi $ git clone https://github.com/sunqm/libcint.git
     pi@qpi:~/qpi $ mkdir -p libcint/build && cd libcint/build
     pi@qpi:~/qpi/libcint/build $ cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local/ ..
@@ -191,6 +205,7 @@ This tutorial is inspired, and use the knowlodges from :
     Open a web browser and point to : http://[Your Pi hostname or IP adress]:8000/ 
     
     Then login using pi user and password 
+
     ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)
 
     You can go ahead and test that Qiskit is runing on JupyterHub, by creating a new Python 3 file , and run the following 
@@ -199,123 +214,109 @@ This tutorial is inspired, and use the knowlodges from :
     pip list | grep qiskit
     ```
     you should get 
+
     ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/pqiskit.png)
 
-1. 
+1. Create the auto start script 
+
+    create the folder 
+
     ```sh
-
+    pi@qpi:~ $ mkdir /home/pi/.config/autostart
     ```
-1. 
+    <span style="color:red"> *importent* </span> : 
+    Choose a png file that you want your raspberry pi to display after starting up (like the chandelier in the video) rename it to and copy it to start.png and upload it to the Raspberry pi filesysten under the folder /home/pi/.config/autostart
+
+    You can upload the file using any [SFTP client](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md) like [filezilla](https://www.youtube.com/watch?v=EBFGMcWftLA) or [SCP](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 
+
+
     ```sh
-
+    pi@qpi:~ $ mkdir /home/pi/.config/autostart
+    pi@qpi:~ $ nano /home/pi/.config/autostart/start.sh
     ```
-1. 
+    and paste the following 
     ```sh
-
+    export DISPLAY=:0 
+    mkdir -p /home/pi/qpi/tmp 
+    cp /home/pi/.config/autostart/start.png /home/pi/qpi/figures/qpi.png 
+    feh --scale-down --auto-zoom --fullscreen --reload 1 /home/pi/qpi/figures/qpi.png 
+    unclutter -idle 0
     ```
-1. 
+    Type ctrl + x, then Y and enter to save the file and exit
+
+    Then run the following commad to make the script executable 
     ```sh
-
+    pi@qpi:~ $ chmod +x /home/pi/.config/autostart/start.sh
     ```
-1. 
+    and make it run at start up by executing 
     ```sh
-
+    pi@qpi:~ $ nano /home/pi/.config/autostart/start.desktop
     ```
-1. 
+    and pasting 
     ```sh
-
+    [Desktop Entry]
+    Type=Application
+    Name=Start
+    Exec=/home/pi/.config/autostart/start.sh
     ```
-1. 
+    Type ctrl + x, then Y and enter to save the file and exit
+
+1. <span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point 
+    In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
+
+    <span style="color:red"> *Importent* </span>  If your raspberry pi is connected to your network via wifi, you will need an aditional usb wifi interface, otherwise you may loose connection to your raspberry through your LAN.
+
+    We used [RaspAP](https://raspap.com)
+
+    In case you did not already set up a WiFi country, please run 
     ```sh
-
+    sudo raspi-config
     ```
-1. 
+    And navigate to 1 System Options -> S1 Wireless LAN and you will prompt to select a country. After that just cancel 
+
+    Installing RaspAP
+
     ```sh
-
+    pi@qpi:~ $ curl -sL https://install.raspap.com | bash
     ```
-1. 
+    Answer Y to all the question
+
+    Go to http://[Your Pi hostname or IP adress]
+
+    The defualt username and password are
+    - Username : admin 
+    - Password : secret
+
+    Use the web interface to change them and save
+
+   ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/rapap.png)
+
+    To change the port of RaspAp run  
+
     ```sh
-
+    pi@qpi:~ $ sudo nano /etc/lighttpd/lighttpd.conf
     ```
-1. 
+    and locate 
     ```sh
-
+    server.port                 = 80
     ```
-1. 
+    Change it to 
     ```sh
-
+    server.port                 = 8080
     ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-1. 
-    ```sh
-
-    ```
-
-
-
-
-
+    Type ctrl + x, then Y and enter to save the file and exit
     
+    then reboot 
+    ```sh
+    pi@qpi:~ $ sudo reboot
+    ```
+    Verify that the changes to the port and credential worked by accessing 
+    http://[Your Pi hostname or IP adress]:8080
 
-## Templates
+    You can also change the SSID of you raspberry Pi , for more details please refer to [RaspAP](https://raspap.com) 
 
-- [QPi](https://github.ibm.com/qpi/qpi) - QPi 
+1. Installing QPi Library
+    ```sh
 
-
-
-## Table
-
-| T1 | T2 |
-| ------ | ------ |
-| 1 | test |
-| 2 | test |
-| 3  | test |
-| 4 | test |
+    ```
 
