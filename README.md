@@ -319,4 +319,45 @@ This tutorial is inspired, and use the knowlodges from :
     ```sh
 
     ```
+1. Runing QPi
 
+    Open a web browser and point to : http://[Your Pi hostname or IP adress]:8000/ 
+    
+    Then login using pi user and password 
+
+    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)
+
+    You can go ahead and creayte a new Python 3 file, and import the needed library 
+
+    ```python
+    import qpi_lib
+    import warnings
+    from qpi_lib import qsphere_funcs
+    from qiskit import QuantumCircuit
+    warnings.filterwarnings('ignore')
+    ```
+
+    Create a circuit and draw it 
+
+
+    ```python
+    qc = QuantumCircuit(3)
+    # Apply H-gate to the first:
+    qc.h(1)
+    qc.x(0)
+
+    # Apply a CNOT:
+    qc.cx(0,1)
+    qc.cx(0,2)
+
+    qc.z(0)
+    qc.z(1)
+
+    qc.draw(output='mpl')
+    ```
+    To visualise any circuit on the QPi you can run 
+
+    ```python
+    qsphere_funcs.plot_qsphere_full(qc)
+    ```
+# Have Fun !
