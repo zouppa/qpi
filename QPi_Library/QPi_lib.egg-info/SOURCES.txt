@@ -1,0 +1,8 @@
+setup.py
+QPi_lib.egg-info/PKG-INFO
+QPi_lib.egg-info/SOURCES.txt
+QPi_lib.egg-info/dependency_links.txt
+QPi_lib.egg-info/requires.txt
+QPi_lib.egg-info/top_level.txt
+qpi_lib/__init__.py
+qpi_lib/qsphere_funcs.py
