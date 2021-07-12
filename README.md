@@ -117,6 +117,8 @@ This tutorial is inspired, and use the knowlodges from :
     pi@qpi:~ $ cd qpi/
     ```
 
+
+
 1. Manual installation of some dependencies
     ```sh
     pi@qpi:~ $ sudo -H pip install setuptools-rust
@@ -316,9 +318,19 @@ This tutorial is inspired, and use the knowlodges from :
     You can also change the SSID of you raspberry Pi , for more details please refer to [RaspAP](https://raspap.com) 
 
 1. Installing QPi Library
-    ```sh
 
+    Download the whl file using the commands below. In case you are not able to use wget, please download the file [QPi_lib-0.2.4-py3-none-any.whl](https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.4-py3-none-any.whl) and uploaded to the QPi under the path /home/pi/qpi
+
+    ```sh
+    cd /home/pi/qpi
+    wget https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.4-py3-none-any.whl
     ```
+    Install the library 
+
+    ```sh
+    pip install QPi_lib-0.2.4-py3-none-any.whl
+    ```
+
 1. Runing QPi
 
     Open a web browser and point to : http://[Your Pi hostname or IP adress]:8000/ 
