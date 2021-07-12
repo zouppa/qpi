@@ -134,9 +134,9 @@ def rotate(x,y,z,lado="FRONT"):
     nuevoz = z
     if lado != "FRONT":
         if x == 0.0 or y == 0.0:  #If x or y are cero it's because they're on the axis. Si x o y es cero es porque estan en el eje
-            if lado == "RIGHT":
-                if y == 0:  nuevoy = nuevoy * (-1)
             if lado == "LEFT":
+                if y == 0:  nuevoy = nuevoy * (-1)
+            if lado == "RIGHT":
                 if x == 0:  nuevox = nuevox * (-1)
             if lado == "BACK":
                 nuevox = x
@@ -146,14 +146,14 @@ def rotate(x,y,z,lado="FRONT"):
             return [nuevox,nuevoy,nuevoz]
         else:
             
-            if lado == "RIGHT":
+            if lado == "LEFT":
                 if (x > 0 and y > 0) or (x < 0 and y < 0): 
                     nuevoy = nuevoy * (-1)
                 if x < 0 and y > 0:  #2do Cuadrante
                     nuevoy = nuevoy * (-1)
                 if x > 0 and y < 0:  #4to Cuadrante
                     nuevox = nuevox * (-1)
-            if lado == "LEFT":
+            if lado == "RIGHT":
                 if (x > 0 and y > 0) or (x < 0 and y < 0): 
                     nuevox = nuevox * (-1)
                 if x < 0 and y > 0:  #2do Cuadrante
@@ -388,12 +388,12 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
             plt.close(fig)
         return fig
 
-def makeHologram(input_up,input_down,input_right,input_left,scale=0.5,scaleR=4,distance=0):
+def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4,distance=0):
     '''
         Create 3D 4-sided hologram from 4 images (must have equal dimensions)
         Args:
-            input_up (jpg, png, ...): frontal image
-            input_down (jpg, png, ...): back-side image
+            input_front (jpg, png, ...): frontal image
+            input_back (jpg, png, ...): back-side image
             input_right (jpg, png, ...): right-side image
             input_left (jpg, png, ...): left-side image
             scale (float): scale up or down the images by this factor
@@ -403,25 +403,25 @@ def makeHologram(input_up,input_down,input_right,input_left,scale=0.5,scaleR=4,d
         Returns: hologram as a numpy array
     '''
     
-    height = int((scale*input_up.shape[0]))
-    width = int((scale*input_up.shape[1]))
+    height = int((scale*input_front.shape[0]))
+    width = int((scale*input_front.shape[1]))
     
-    image = cv2.flip(input_up, 1)
-    input_down = cv2.flip(input_down, 1)
+    input_front = cv2.flip(input_front, 1)
+    input_back = cv2.flip(input_back, 1)
     input_right = cv2.flip(input_right, 1)
     input_left = cv2.flip(input_left, 1)
     
-    image = cv2.resize(image, (width, height), interpolation = cv2.INTER_CUBIC)
-    input_down = cv2.resize(input_down, (width, height), interpolation = cv2.INTER_CUBIC)
+    input_front = cv2.resize(input_front, (width, height), interpolation = cv2.INTER_CUBIC)
+    input_back = cv2.resize(input_back, (width, height), interpolation = cv2.INTER_CUBIC)
     input_right = cv2.resize(input_right, (width, height), interpolation = cv2.INTER_CUBIC)
     input_left = cv2.resize(input_left, (width, height), interpolation = cv2.INTER_CUBIC)
     
-    up = image.copy()
-    down = rotate_bound(input_down.copy(),180)
+    up = input_front.copy()
+    down = rotate_bound(input_back.copy(),180)
     right = rotate_bound(input_right.copy(), 90)
     left = rotate_bound(input_left.copy(), 270)
     
-    hologram = np.zeros([ int(max(image.shape)*scaleR+distance),int(max(image.shape)*scaleR+distance),3], image.dtype)
+    hologram = np.zeros([ int(max(input_front.shape)*scaleR+distance),int(max(input_front.shape)*scaleR+distance),3], input_front.dtype)
     print("hologram",hologram.shape)
     center_x = floor((hologram.shape[0])/2)
     
@@ -466,11 +466,11 @@ def join_images():
     # Joins the 4 images of the 4 sides, previously exported into the figures folder, into a single jpg image called hologram.
     # Returns: "hologram.jpg" image in the figures folder
 
-    up = cv2.imread("figures/BACK.jpg")
-    down = cv2.imread("figures/FRONT.jpg")
+    front = cv2.imread("figures/FRONT.jpg")
+    back = cv2.imread("figures/BACK.jpg")
     right = cv2.imread("figures/RIGHT.jpg")
     left = cv2.imread("figures/LEFT.jpg")
-    holo = makeHologram(up,down,right,left,scale=1.0,scaleR=2.52)
+    holo = makeHologram(front,back,right,left,scale=1.0,scaleR=2.52)
     cv2.imwrite("figures/hologram.jpg",holo)
 
 
