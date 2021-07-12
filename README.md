@@ -372,4 +372,4 @@ This tutorial is inspired, and use the knowlodges from :
     ```python
     qsphere_funcs.plot_qsphere_full(qc)
     ```
-# Have Fun !
+# Please feel free to check the example in the file qpi_example.ipynb and Have Fun exploring the sphere from different views !
