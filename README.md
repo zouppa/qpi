@@ -10,7 +10,7 @@ Please feel free to watch the demo video :
 [![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
 
-QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Bloch Sphere from different views.
+QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Qsphere from different views.
 
 To build a QPi you will need:
 
@@ -25,7 +25,7 @@ To build a QPi you will need:
 
 ## Features
 
-- Visualise Bloch Sphere in 3 dimention (with 4 views)
+- Visualise QSphere in 3 dimentions (with 4 views)
 - Wifi Access point to allow you to use it in uknown territory (without internet connection)
 
 ## Get Started 
@@ -37,7 +37,7 @@ You can get QPi in 2 different way
 
 ## Installation Tutorial 
 
-This tutorial is inspired, and use the knowlodges from : 
+This tutorial is inspired, and use the knowledge from : 
 
 - [RasQberry: Quantum Computing is the Coolest Project for Raspberry](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133)
 - [Setup your home JupyterHub on a Raspberry Pi](https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed)
@@ -71,7 +71,7 @@ This tutorial is inspired, and use the knowlodges from :
     pi@qpi:~ $ sudo ./LCD5-show
     ```
 1. Disable the screen save 
-    Please find here different way to [disable the screensave](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
+    Please find here different ways to [disable the screensave](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
 
 
 1. Configure the RPI to use Python 3 
@@ -147,7 +147,7 @@ This tutorial is inspired, and use the knowlodges from :
     pi@qpi:~/qpi/libcint/build $ pip list | grep qiskit
      ```
     
-     You should get something like that (version may vary dependin)
+     You should get something like that (version may vary)
     ```sh
     qiskit               0.26.2
     qiskit-aer           0.8.2
@@ -319,16 +319,16 @@ This tutorial is inspired, and use the knowlodges from :
 
 1. Installing QPi Library
 
-    Download the whl file using the commands below. In case you are not able to use wget, please download the file [QPi_lib-0.2.4-py3-none-any.whl](https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.4-py3-none-any.whl) and uploaded to the QPi under the path /home/pi/qpi
+    Download the whl file using the commands below. In case you are not able to use wget, please download the file [QPi_lib-0.2.7-py3-none-any.whl](https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl) and upload it to the QPi under the path /home/pi/qpi
 
     ```sh
     cd /home/pi/qpi
-    wget https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.4-py3-none-any.whl
+    wget https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl
     ```
     Install the library 
 
     ```sh
-    pip install QPi_lib-0.2.4-py3-none-any.whl
+    pip install QPi_lib-0.2.7-py3-none-any.whl
     ```
 
 1. Runing QPi
