@@ -7,7 +7,7 @@ Please feel free to watch the demo video :
 
 [![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/video.png?raw=true)](https://youtu.be/BiD5429jMis)
 
-[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
+[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Qsphere from different views.
@@ -208,7 +208,7 @@ This tutorial is inspired, and use the knowledge from :
     
     Then login using pi user and password 
 
-    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)
+    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/login.png)
 
     You can go ahead and test that Qiskit is runing on JupyterHub, by creating a new Python 3 file , and run the following 
 
@@ -217,7 +217,7 @@ This tutorial is inspired, and use the knowledge from :
     ```
     you should get 
 
-    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/pqiskit.png)
+    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/pqiskit.png)
 
 1. Create the auto start script 
 
@@ -291,7 +291,7 @@ This tutorial is inspired, and use the knowledge from :
 
     Use the web interface to change them and save
 
-   ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/rapap.png)
+   ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/rapap.png)
 
     To change the port of RaspAp run  
 
@@ -337,7 +337,7 @@ This tutorial is inspired, and use the knowledge from :
     
     Then login using pi user and password 
 
-    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/login.png)
+    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/login.png)
 
     You can go ahead and creayte a new Python 3 file, and import the needed library 
 
