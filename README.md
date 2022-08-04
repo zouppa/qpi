@@ -3,7 +3,7 @@
 
 
 
-Please feel free to watch the [Demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)
+Please feel free to watch the [demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)
 
 <!--[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)-->
 
