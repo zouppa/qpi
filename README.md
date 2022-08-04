@@ -372,4 +372,7 @@ This tutorial is inspired, and use the knowledge from :
     ```python
     qsphere_funcs.plot_qsphere_full(qc)
     ```
-# Please feel free to check [Intoduction to Qpi] (https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb) so you can build your own and [Quantum Operations with Qpi] (https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) for a guide in your firsts circuits!
+# Please feel free to check Intoduction to Qpi so you can build your own and Quantum Operations with Qpi for a guide in your firsts circuits!
+
+-[Intoduction to Qpi] (https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
+-[Quantum Operations with Qpi] (https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
