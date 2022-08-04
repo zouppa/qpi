@@ -217,7 +217,7 @@ This tutorial is inspired, and use the knowledge from :
     ```
     you should get 
 
-    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/pqiskit.png)
+    ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/pqiskit.png)
 
 1. Create the auto start script 
 
@@ -291,7 +291,7 @@ This tutorial is inspired, and use the knowledge from :
 
     Use the web interface to change them and save
 
-   ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/rapap.png)
+   ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/rapap.png)
 
     To change the port of RaspAp run  
 
@@ -337,7 +337,7 @@ This tutorial is inspired, and use the knowledge from :
     
     Then login using pi user and password 
 
-    ![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/resources/login.png)
+    ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/login.png)
 
     You can go ahead and creayte a new Python 3 file, and import the needed library 
 
