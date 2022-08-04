@@ -5,7 +5,7 @@
 
 Please feel free to watch the demo video :
 
-[![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/video.png)](https://ibm.ent.box.com/embed/s/h69iu0ul42yvz5n9v90q08mekxb6jzr2?sortColumn=date&view=list")
+[![N|Solid](https://github.com/zouppa/qpi/blob/main/misc/video.png?raw=true)](https://youtu.be/BiD5429jMis)
 
 [![N|Solid](https://github.ibm.com/qpi/qpi/blob/master/misc/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
