@@ -31,8 +31,8 @@ To build a QPi you will need:
 ## Get Started 
 You can get QPi in 2 different way
 
-- Download the ready to use image and write it in the SD 
 - Follow the Tutorial to install it yourself
+	
 
 
 ## Installation Tutorial 
@@ -374,5 +374,5 @@ This tutorial is inspired, and use the knowledge from :
     ```
 # Please feel free to check Intoduction to Qpi so you can build your own and Quantum Operations with Qpi for a guide in your firsts circuits!
 
-- [Intoduction to Qpi] (https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
-- [Quantum Operations with Qpi] (https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
+- [Intoduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
+- [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
