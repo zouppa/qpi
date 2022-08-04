@@ -7,7 +7,7 @@ Please feel free to watch the demo video :
 
 [![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/video.png?raw=true)](https://youtu.be/BiD5429jMis)
 
-[![N|Solid](https://github.ibm.com/qpi/qpi/blob/main/resources/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
+[![N|Solid](https://github.ibm.com/zouppa/qpi/blob/main/resources/down.png)](https://ibm.box.com/s/ovs9cy4r1t6r3o0fj63yycz6h8xt23yc)
 
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Qsphere from different views.
