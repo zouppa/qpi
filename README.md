@@ -7,7 +7,7 @@ Please feel free to watch the demo video :
 
 [![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/video.png?raw=true)](https://youtu.be/BiD5429jMis)
 
-[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)
+<!--[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)-->
 
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Qsphere from different views.
@@ -319,11 +319,11 @@ This tutorial is inspired, and use the knowledge from :
 
 1. Installing QPi Library
 
-    Download the whl file using the commands below. In case you are not able to use wget, please download the file [QPi_lib-0.2.7-py3-none-any.whl](https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl) and upload it to the QPi under the path /home/pi/qpi
+    Download the whl file using the commands below. In case you are not able to use wget, please download the file [QPi_lib-0.2.7-py3-none-any.whl](https://github.com/zouppa/qpi/tree/main/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl) and upload it to the QPi under the path /home/pi/qpi
 
     ```sh
     cd /home/pi/qpi
-    wget https://github.ibm.com/qpi/qpi/blob/master/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl
+    wget https://github.com/zouppa/qpi/tree/main/QPi_Library/QPi_lib-0.2.7-py3-none-any.whl
     ```
     Install the library 
 
