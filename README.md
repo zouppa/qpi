@@ -30,7 +30,7 @@ To build a QPi you will need:
 You can get QPi in 2 different way
 
 - Follow the Tutorial to install it yourself
-	
+- Contact us to provide you with the ready to use image and write it in the SD	
 
 
 ## Installation Tutorial 
