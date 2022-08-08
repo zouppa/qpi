@@ -5,6 +5,8 @@
 
 Please feel free to watch the [demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)
 
+You can dowmload the ready to use [disk image](https://zouppa.com/qpi/Qpi_1.0_C.zip)
+
 <!--[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)-->
 
 
