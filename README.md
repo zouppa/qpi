@@ -381,7 +381,7 @@ This tutorial is inspired, and use the knowledge from :
 
 -[Catalina Albornoz Anzola](https://www.linkedin.com/in/catalinaalbornoz)
 
--[El Serch : Sergio Inurreta](www.linkedin.com/in/el-serch)
+-[El Serch : Sergio Inurreta](https://www.linkedin.com/in/el-serch/)
 
 -[Ana Vialeny Mota Gómez](https://www.linkedin.com/in/vialeny)
 
