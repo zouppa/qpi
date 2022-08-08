@@ -374,3 +374,8 @@ This tutorial is inspired, and use the knowledge from :
 
 - [Intoduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
 - [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
+
+# Please feel free to reach out to the team:
+
+https://www.linkedin.com/in/zouppa/
+www.linkedin.com/in/el-serch
