@@ -379,12 +379,12 @@ This tutorial is inspired, and use the knowledge from :
 
 # Please feel free to reach out to the team:
 
--[Zouppa : Mohamed Zouhaier Ramadhane](https://www.linkedin.com/in/zouppa)
+- [Zouppa : Mohamed Zouhaier Ramadhane](https://www.linkedin.com/in/zouppa)
 
--[Catalina Albornoz Anzola](https://www.linkedin.com/in/catalinaalbornoz)
+- [Catalina Albornoz Anzola](https://www.linkedin.com/in/catalinaalbornoz)
 
--[El Serch : Sergio Inurreta](https://www.linkedin.com/in/el-serch/)
+- [El Serch : Sergio Inurreta](https://www.linkedin.com/in/el-serch/)
 
--[Ana Vialeny Mota Gómez](https://www.linkedin.com/in/vialeny)
+- [Ana Vialeny Mota Gómez](https://www.linkedin.com/in/vialeny)
 
--[Jaime Jesús Ambrosio Mallqui](https://www.linkedin.com/in/jaime-ambrosio)
+- [Jaime Jesús Ambrosio Mallqui](https://www.linkedin.com/in/jaime-ambrosio)
