@@ -5,12 +5,12 @@
 
 Please feel free to watch the [demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)
 
-You can dowmload the ready to use [disk image](https://zouppa.com/qpi/Qpi_1.0_C.zip)
+You can download the ready to use [disk image](https://zouppa.com/qpi/Qpi_1.0_C.zip)
 
 <!--[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)-->
 
 
-QPi is an implementation of the Qiskit platform meant to facilitate learning by visualising the Qsphere from different views.
+QPi is an implementation of the Qiskit platform meant to facilitate learning by visualizing the Qsphere from different views.
 
 To build a QPi you will need:
 
@@ -25,11 +25,11 @@ To build a QPi you will need:
 
 ## Features
 
-- Visualise QSphere in 3 dimentions (with 4 views)
-- Wifi Access point to allow you to use it in uknown territory (without internet connection)
+- Visualize QSphere in 3 dimensions (with 4 views)
+- Wi-Fi Access point to allow you to use it in unknown territory (without internet connection)
 
 ## Get Started 
-You can get QPi in 2 different way
+You can get QPi in 2 different ways
 
 - Follow the Tutorial to install it yourself
 - Contact us to provide you with the ready to use image and write it in the SD	
@@ -43,7 +43,7 @@ This tutorial is inspired, and use the knowledge from :
 - [Setup your home JupyterHub on a Raspberry Pi](https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed)
 
 
-1. Download Raspberry [pi Imager](https://www.raspberrypi.org/software/) and Install Raspberry OS, and access it via ssh. More information can be found here :
+1. Download Raspberry [pi Imager](https://www.raspberrypi.org/software/), Install Raspberry OS, and access it via ssh. More information can be found here :
 
     -[Getting Started](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started) 
 
@@ -64,14 +64,14 @@ This tutorial is inspired, and use the knowledge from :
 
 1. <span style="color:red"> *Optional* </span>  Installing and configuring the screen
 
-    Please refer to the tutorial related to your screen manufucturer. In our case we are using a 5 inch HDMI capacitive screen. 
+    Please refer to the tutorial related to your screen manufacturer. In our case we are using a 5-inch HDMI capacitive screen. 
     ```sh
     pi@qpi:~ $ git clone https://github.com/goodtft/LCD-show.git
     pi@qpi:~ $ cd LCD-show/
     pi@qpi:~ $ sudo ./LCD5-show
     ```
 1. Disable the screen save 
-    Please find here different ways to [disable the screensave](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
+    Please find here different ways to [disable the screensaver](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
 
 
 1. Configure the RPI to use Python 3 
@@ -204,13 +204,13 @@ This tutorial is inspired, and use the knowledge from :
     May 23 15:57:49 qpi jupyterhub[9578]: 15:57:49.337 [ConfigProxy] info: 201 POST /api/routes/
     May 23 15:57:49 qpi jupyterhub[9578]: [I 2021-05-23 15:57:49.338 JupyterHub app:2853] JupyterHub is now running at http://:8000
     ```
-    Open a web browser and point to : http://[Your Pi hostname or IP adress]:8000/ 
+    Open a web browser and point to: http://[Your Pi hostname or IP address]:8000/ 
     
     Then login using pi user and password 
 
     ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/login.png)
 
-    You can go ahead and test that Qiskit is runing on JupyterHub, by creating a new Python 3 file , and run the following 
+    You can go ahead and test that Qiskit is running on JupyterHub, by creating a new Python 3 file, and run the following 
 
     ```python
     pip list | grep qiskit
@@ -226,8 +226,8 @@ This tutorial is inspired, and use the knowledge from :
     ```sh
     pi@qpi:~ $ mkdir /home/pi/.config/autostart
     ```
-    <span style="color:red"> *importent* </span> : 
-    Choose a png file that you want your raspberry pi to display after starting up (like the chandelier in the video) rename it to and copy it to start.png and upload it to the Raspberry pi filesysten under the folder /home/pi/.config/autostart
+    <span style="color:red"> *important* </span> : 
+    Choose a png file that you want your raspberry pi to display after starting up (like the chandelier in the video) rename it to and copy it to start.png and upload it to the Raspberry pi filesystem under the folder /home/pi/.config/autostart
 
     You can upload the file using any [SFTP client](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md) like [filezilla](https://www.youtube.com/watch?v=EBFGMcWftLA) or [SCP](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 
 
@@ -246,7 +246,7 @@ This tutorial is inspired, and use the knowledge from :
     ```
     Type ctrl + x, then Y and enter to save the file and exit
 
-    Then run the following commad to make the script executable 
+    Then run the following command to make the script executable 
     ```sh
     pi@qpi:~ $ chmod +x /home/pi/.config/autostart/start.sh
     ```
@@ -266,11 +266,11 @@ This tutorial is inspired, and use the knowledge from :
 1. <span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point 
     In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
-    <span style="color:red"> *Importent* </span>  If your raspberry pi is connected to your network via wifi, you will need an aditional usb wifi interface, otherwise you may loose connection to your raspberry through your LAN.
+    <span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
 
     We used [RaspAP](https://raspap.com)
 
-    In case you did not already set up a WiFi country, please run 
+    In case you did not already set up a Wi-Fi country, please run 
     ```sh
     sudo raspi-config
     ```
@@ -283,9 +283,9 @@ This tutorial is inspired, and use the knowledge from :
     ```
     Answer Y to all the question
 
-    Go to http://[Your Pi hostname or IP adress]
+    Go to http://[Your Pi hostname or IP address]
 
-    The defualt username and password are
+    The default username and password are
     - Username : admin 
     - Password : secret
 
@@ -313,9 +313,9 @@ This tutorial is inspired, and use the knowledge from :
     pi@qpi:~ $ sudo reboot
     ```
     Verify that the changes to the port and credential worked by accessing 
-    http://[Your Pi hostname or IP adress]:8080
+    http://[Your Pi hostname or IP address]:8080
 
-    You can also change the SSID of you raspberry Pi , for more details please refer to [RaspAP](https://raspap.com) 
+    You can also change the SSID of you raspberry Pi, for more details please refer to [RaspAP](https://raspap.com) 
 
 1. Installing QPi Library
 
@@ -331,15 +331,15 @@ This tutorial is inspired, and use the knowledge from :
     pip install QPi_lib-0.2.7-py3-none-any.whl
     ```
 
-1. Runing QPi
+1. Running QPi
 
-    Open a web browser and point to : http://[Your Pi hostname or IP adress]:8000/ 
+    Open a web browser and point to : http://[Your Pi hostname or IP address]:8000/ 
     
     Then login using pi user and password 
 
     ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/login.png)
 
-    You can go ahead and creayte a new Python 3 file, and import the needed library 
+    You can go ahead and create a new Python 3 file, and import the needed library 
 
     ```python
     import qpi_lib
@@ -367,14 +367,14 @@ This tutorial is inspired, and use the knowledge from :
 
     qc.draw(output='mpl')
     ```
-    To visualise any circuit on the QPi you can run 
+    To visualize any circuit on the QPi you can run 
 
     ```python
     qsphere_funcs.plot_qsphere_full(qc)
     ```
-# Please feel free to check Intoduction to Qpi so you can build your own and Quantum Operations with Qpi for a guide in your firsts circuits!
+# Please feel free to check Introduction to Qpi so you can build your own and Quantum Operations with Qpi for a guide in your firsts circuits!
 
-- [Intoduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
+- [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
 - [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
 
 # Please feel free to reach out to the team:
