@@ -42,7 +42,7 @@ In this tutorial we will
 - [Install Qiskit and feh](#install-qiskit-and-feh)
 - [Set up JupyterHub as a system service](#set-up-jupyterhub-as-a-system-service)
 - [Create the auto start script](#create-the-auto-start-script)
-- [<span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point](#optional-configure-the-raspberry-pi-as-an-access-point)
+- <span style="color:red"> *Optional* </span>  [Configure the Raspberry Pi as an Access point](#configure-the-raspberry-pi-as-an-access-point)
 
 
 
@@ -302,7 +302,8 @@ This script will auto start feh when the QPi start. for more details about that,
     ```
     Type ctrl + x, then Y and enter to save the file and exit
 
-### <span style="color:red"> *Optional* </span>Configure the Raspberry Pi as an Access point 
+<span style="color:red"> *Optional* </span>
+### Configure the Raspberry Pi as an Access point 
 
     In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
