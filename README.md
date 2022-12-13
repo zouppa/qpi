@@ -36,25 +36,41 @@ You can get QPi in 2 different ways
 
 ## Installation Tutorial 
 
+In this tutorial we will
+- [Install and configure the Raspberry Pi Operating System and Python ](#install-raspberry-pi-os)
+- [Install Jupyter Hub](#install-jupyter-hub)
+- [Install Qiskit and feh](#install-qiskit-and-feh)
+- [Set up JupyterHub as a system service](#set-up-jupyterhub-as-a-system-service)
+- [Create the auto start script](#create-the-auto-start-script)
+- [<span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point](#optional-configure-the-raspberry-pi-as-an-access-point)
+
+
+
+
 This tutorial is inspired, and use the knowledge from : 
 
 - [RasQberry: Quantum Computing is the Coolest Project for Raspberry](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133)
 - [Setup your home JupyterHub on a Raspberry Pi](https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed)
+- [Install Qiskit](#install-qiskit)
 
+### install Raspberry Pi OS
 
 1. Download Raspberry [pi Imager](https://www.raspberrypi.org/software/), Install Raspberry OS, and access it via ssh. More information can be found here :
 
     -[Getting Started](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started) 
 
-    -[SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/) 
+    -[SSH](https://www.raspberrypi.com/documentation/computers/remote-access.html) 
 
-    -[Set Up a Headless Raspberry Pi](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
+    -[Set Up a Headless Raspberry Pi](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi)
 
-1. Connect using SSH to RPi and Update the OS 
+1. Connect using SSH to RPi and Update the OS. This is the standard procedure to make sure that you are up to date
     ```sh
     sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
     ```
-1. Create a swap space of 1 GB
+1. Create a swap space of 1 GB. 
+
+As some of the compilation and installation tasks require more than the 512 MB of RAM that are available on smaller Raspberry Pi models, we increase the swap space to 1 GB. The size of the configured swap space can be checked with free -m.
+
     ```sh
     pi@qpi:~ $ sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/' /etc/dphys-swapfile
     pi@qpi:~ $ sudo /etc/init.d/dphys-swapfile stop
@@ -63,6 +79,7 @@ This tutorial is inspired, and use the knowledge from :
 
 1. <span style="color:red"> *Optional* </span>  Installing and configuring the screen
 
+ Some screen have very specific resolution and features (like touch screen, controlling the brightness etc.) and need to have specific drivers to enable those features.
     Please refer to the tutorial related to your screen manufacturer. In our case we are using a 5-inch HDMI capacitive screen. 
     ```sh
     pi@qpi:~ $ git clone https://github.com/goodtft/LCD-show.git
@@ -70,15 +87,23 @@ This tutorial is inspired, and use the knowledge from :
     pi@qpi:~ $ sudo ./LCD5-show
     ```
 1. Disable the screen save 
-    Please find here different ways to [disable the screensaver](https://www.raspberrypi.org/documentation/configuration/screensaver.md) 
+
+When using the QPi usually we interact with it remotely using the Jupyter Notebook and feh to display the QSphere. As a result, after a certain time of using the QPi, the screen may go dark or start using the screensaver. To avoid that, we recommend disabling the screensaver and screen blanking.
+
+    Please find here different ways to [disable the screensaver](https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-screen-blanking) 
 
 
 1. Configure the RPI to use Python 3 
+
+Qiskit supports Python 3.7 or later
+
     ```sh
     pi@qpi:~ $ sudo rm /usr/bin/python 
     pi@qpi:~ $ sudo ln -s /usr/bin/python3 /usr/bin/python
     ```
 1. Install and upgrade the python package manager pip
+
+Pip is the package installer / manager for Python. We will need to install and update needed software like : notebook, jupyterHub, setuptools-rust, pyscf, cython ect. You can identify all the dependencies that pip support us to install by searching "pip3 install" in this tutorial.
 
     ```sh
     pi@qpi:~ $ sudo apt-get install python3-pip 
@@ -86,7 +111,12 @@ This tutorial is inspired, and use the knowledge from :
 
     ```
 
+### Install Jupyter Hub
+
 1. Install Node JS and the Proxy 
+
+To be able to run Jupyter hub, we need a proxy that routes the user requests to the hub and the notebook servers. In this tutorial, we will use [configurable-http-proxy](https://www.npmjs.com/package/configurable-http-proxy) that run on [NodeJS](https://nodejs.org/)
+
     ```sh
     pi@qpi:~ $ sudo su
     root@qpi:/home/pi# curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
@@ -99,6 +129,9 @@ This tutorial is inspired, and use the knowledge from :
     pi@qpi:~ $
     ```
 1. Install Jupyter Notebook and JupyterHub
+
+In the QPi project, we use the main screen of the device to display a projection of a QSphere. As a result, the only way to interact with the QPi (a part of having a second screen) will be remotely. Since Qiskit is based on python, and most of it is tutorials uses Jupyter notebook, we wanted this project to have a familiar interface and allow anyone to easily start experimenting with Quantum computing and Qiskit. Having this set of tools will allow the user to access a jupyter notebook in his personal device (laptop/smartphone), create a circuit and watch the QPi display it as a hologram.  
+
     ```sh
     pi@qpi:~ $ sudo -H pip3 install notebook jupyterhub
     ```
@@ -116,9 +149,11 @@ This tutorial is inspired, and use the knowledge from :
     pi@qpi:~ $ cd qpi/
     ```
 
+### Install Qiskit and feh
 
+The main idea of the QPi project is to be abe to use your personal device to connect to the QPi. Open a Jupyter notebook remotely, and allow the user to create any Quantum circuit and visualize its QSphere as a hologram projection. To be able to do that, we have created a python library that when used will create an image composed by 4 different views of the Qsphere and save it with a specific name in a specific folder. We then use feh a lightweight image viewer to display this image with a specified refresh rate (in this tutorial we use 1 second). To have a good user experience, we recommend running feh at startup.
 
-1. Manual installation of some dependencies
+1. Manual installation of some [dependencies for Qiskit](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133#acc1) 
     ```sh
     pi@qpi:~ $ sudo -H pip install setuptools-rust
     pi@qpi:~ $ curl -o get_rustup.sh -s https://sh.rustup.rs
@@ -155,7 +190,10 @@ This tutorial is inspired, and use the knowledge from :
     qiskit-ignis         0.6.0
     qiskit-terra         0.17.4
     ```
-1. Set up JupyterHub as a system service
+1. ### Set up JupyterHub as a system service
+
+Setting up JupyterHub as a service will allow us to start it automatically
+
     ```sh
     pi@qpi:~/qpi/libcint/build $ sudo nano /lib/systemd/system/jupyterhub.service
     ```
@@ -218,7 +256,9 @@ This tutorial is inspired, and use the knowledge from :
 
     ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/pqiskit.png)
 
-1. Create the auto start script 
+1. ### Create the auto start script 
+
+This script will auto start feh when the QPi start. for more details about that, please refer to [Install Qiskit and feh](#install-qiskit-and-feh)
 
     create the folder 
 
@@ -262,7 +302,8 @@ This tutorial is inspired, and use the knowledge from :
     ```
     Type ctrl + x, then Y and enter to save the file and exit
 
-1. <span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point 
+### <span style="color:red"> *Optional* </span>  Configure the Raspberry Pi as an Access point 
+
     In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
     <span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
