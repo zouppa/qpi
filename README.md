@@ -44,7 +44,11 @@ In this tutorial we will
 - [Create the auto start script](#create-the-auto-start-script)
 - <span style="color:red"> *Optional* </span>  [Configure the Raspberry Pi as an Access point](#configure-the-raspberry-pi-as-an-access-point)
 
+This tutorial have been created and tested on the following versions:
 
+- Operating System : Raspbian GNU/Linux 10 (buster)
+- Python 3.7.3
+- Qiskit 0.26.2
 
 
 This tutorial is inspired, and use the knowledge from : 
