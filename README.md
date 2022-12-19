@@ -18,7 +18,7 @@ To build a QPi you will need:
 - Power Supply for the Raspberry Pi
 - Micro SD card with at least 8GB of storage (We recommend 16 GB)
 - 5 inch screen (or bigger) [Like This one](https://aliexpress.com/item/4000285089550.html)
-- Ready to use holo pyramid (or you can build your own) [Like This one](https://aliexpress.com/item/4000081968339.html)
+- Ready to use holo pyramid (or you can build your own) [Like This one](https://www.aliexpress.com/item/1005003088437355.html)
 - [Optional] Raspberry Pi Battery Hat : in case you want to use the QPi anywhere without the need to connect it to a power source
 - ✨Magic ✨
 
@@ -44,7 +44,11 @@ In this tutorial we will
 - [Create the auto start script](#create-the-auto-start-script)
 - <span style="color:red"> *Optional* </span>  [Configure the Raspberry Pi as an Access point](#configure-the-raspberry-pi-as-an-access-point)
 
+This tutorial have been created and tested on the following versions:
 
+- Operating System : Raspbian GNU/Linux 10 (buster)
+- Python 3.7.3
+- Qiskit 0.26.2
 
 
 This tutorial is inspired, and use the knowledge from : 
