@@ -1,6 +1,11 @@
 
 # This file contains the functions available in the Library.
-# Part of this code was taken and modified from https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#plot_state_qsphere
+# Part of this code was taken and modified from 
+#   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#plot_state_qsphere
+#   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#n_choose_k
+#   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#bit_string_index
+#   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#lex_index
+#   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#phase_to_rgb
 # This code is part of Qiskit.
 #
 # (C) Copyright IBM 2017, 2018, 2021.
@@ -30,6 +35,8 @@ from scipy import linalg
 
 import cv2
 from math import floor
+
+################### This section corresponds to Qiskit's own libraries. ###################
 
 if HAS_MATPLOTLIB:
     from matplotlib import get_backend
@@ -108,74 +115,8 @@ def phase_to_rgb(complex_number):
     rgb = colorsys.hls_to_rgb(angles / (np.pi * 2), 0.5, 0.5)
     return rgb
 
-#lado (RIGHT, LEFT , FRONT, BACK)
-def rotate(x,y,z,lado="FRONT"):
-    
-    """ Creates the right, left and back views of the qsphere by rotating the position of the state circles.
-    Args:
-        x (float): x-coordinate of current point in the qsphere
-        y (float): y-coordinate of current point in the qsphere
-        z (float): z-coordinate of current point in the qsphere
-        lado (str): side. Can be "RIGHT", "LEFT" , "FRONT" or "BACK"
-
-    Returns:
-        If lado is not "FRONT":
-            nuevo x (float): new x-coordinate of point in the qsphere
-            nuevo y (float): new y-coordinate of point in the qsphere
-            nuevo z (float): new z-coordinate of point in the qsphere
-        Else if lado is "FRONT":
-            x (float): x-coordinate of current point in the qsphere
-            y (float): y-coordinate of current point in the qsphere
-            z (float): z-coordinate of current point in the qsphere
-    """
-
-    nuevox = y
-    nuevoy = x
-    nuevoz = z
-    if lado != "FRONT":
-        if x == 0.0 or y == 0.0:  #If x or y are cero it's because they're on the axis. Si x o y es cero es porque estan en el eje
-            if lado == "LEFT":
-                if y == 0:  nuevoy = nuevoy * (-1)
-            if lado == "RIGHT":
-                if x == 0:  nuevox = nuevox * (-1)
-            if lado == "BACK":
-                nuevox = x
-                nuevoy = y
-                if y == 0:  nuevox = nuevox * (-1)
-                if x == 0:  nuevoy = nuevoy * (-1)
-            return [nuevox,nuevoy,nuevoz]
-        else:
-            
-            if lado == "LEFT":
-                if (x > 0 and y > 0) or (x < 0 and y < 0): 
-                    nuevoy = nuevoy * (-1)
-                if x < 0 and y > 0:  #2do Cuadrante
-                    nuevoy = nuevoy * (-1)
-                if x > 0 and y < 0:  #4to Cuadrante
-                    nuevox = nuevox * (-1)
-            if lado == "RIGHT":
-                if (x > 0 and y > 0) or (x < 0 and y < 0): 
-                    nuevox = nuevox * (-1)
-                if x < 0 and y > 0:  #2do Cuadrante
-                    nuevox = nuevox * (-1)
-                if x > 0 and y < 0:  #4to Cuadrante
-                    nuevoy = nuevoy * (-1)
-            if lado == "BACK":
-                nuevox = x
-                nuevoy = y
-                if (x > 0 and y > 0) or (x < 0 and y < 0): 
-                    nuevox = nuevox*(-1)
-                    nuevoy = nuevoy*(-1)
-                if (x > 0 and y < 0) or (x < 0 and y > 0):
-                    nuevox = nuevox * (-1)
-                    nuevoy = nuevoy * (-1)                    
-                
-            return [nuevox,nuevoy,nuevoz]
-    else:
-        return [x,y,z]
-
 def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_labels=True,
-                       show_state_phases=False, use_degrees=False, *,lado="FRONT"):
+                       show_state_phases=False, use_degrees=False, *,side="FRONT"):
     """Plot the qsphere representation of a quantum state.
     Here, the size of the points is proportional to the probability
     of the corresponding term in the state and the color represents
@@ -194,7 +135,7 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
             show the phase for each basis state.
         use_degrees (bool): An optional boolean indicating whether to use
             radians or degrees for the phase values in the plot.
-        lado (str): It's the side of the qsphere to be graphed. It can either be "FRONT", "RIGHT", "LEFT" or "BACK"
+        side (str): It's the side of the qsphere to be graphed. It can either be "FRONT", "RIGHT", "LEFT" or "BACK"
 
     Returns:
         Figure: A matplotlib figure instance if the ``ax`` kwag is not set
@@ -215,7 +156,7 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
         qc.h(0)
         qc.cx(0, 1)
 
-        plot_state_qsphere_mod(quantum_circuit=qc, show_state_labels=False,lado="BACK")
+        plot_state_qsphere_mod(quantum_circuit=qc, show_state_labels=False,side="BACK")
     """
     if not HAS_MATPLOTLIB:
         raise ImportError('Must have Matplotlib installed. To install, run "pip install '
@@ -336,10 +277,10 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
                             ha='center', va='center', size=12)
                     
                 
-                nuevos = rotate(xvalue, yvalue, zvalue, lado)
-                xvalue = nuevos[0]
-                yvalue = nuevos[1]
-                zvalue = nuevos[2]
+                news = rotate(xvalue, yvalue, zvalue, side)
+                xvalue = news[0]
+                yvalue = news[1]
+                zvalue = news[2]
                 
                 # alfa defines the transparency of the dots
                 alfa = 1 #alfa=1 means no transparency
@@ -381,12 +322,80 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
         dir = 'figures/'
         if not os.path.exists(dir):
             os.makedirs(dir)
-        plt.savefig(dir + lado + '.jpg',format='jpg',dpi=250.0)
+        plt.savefig(dir + side + '.jpg',format='jpg',dpi=250.0)
         
         if get_backend() in ['module://ipykernel.pylab.backend_inline',
                              'nbAgg']:
             plt.close(fig)
         return fig
+
+################### This section corresponds to the functions created by the Qpi team. ###################
+
+#side (RIGHT, LEFT , FRONT, BACK)
+def rotate(x,y,z,side="FRONT"):
+    
+    """ Creates the right, left and back views of the qsphere by rotating the position of the state circles.
+    Args:
+        x (float): x-coordinate of current point in the qsphere
+        y (float): y-coordinate of current point in the qsphere
+        z (float): z-coordinate of current point in the qsphere
+        side (str): side. Can be "RIGHT", "LEFT" , "FRONT" or "BACK"
+
+    Returns:
+        If side is not "FRONT":
+            nuevo x (float): new x-coordinate of point in the qsphere
+            nuevo y (float): new y-coordinate of point in the qsphere
+            nuevo z (float): new z-coordinate of point in the qsphere
+        Else if side is "FRONT":
+            x (float): x-coordinate of current point in the qsphere
+            y (float): y-coordinate of current point in the qsphere
+            z (float): z-coordinate of current point in the qsphere
+    """
+
+    newx = y
+    newy = x
+    newz = z
+    if side != "FRONT":
+        if x == 0.0 or y == 0.0:  #If x or y are cero it's because they're on the axis. Si x o y es cero es porque estan en el eje
+            if side == "LEFT":
+                if y == 0:  newy = newy * (-1)
+            if side == "RIGHT":
+                if x == 0:  newx = newx * (-1)
+            if side == "BACK":
+                newx = x
+                newy = y
+                if y == 0:  newx = newx * (-1)
+                if x == 0:  newy = newy * (-1)
+            return [newx,newy,newz]
+        else:
+            
+            if side == "LEFT":
+                if (x > 0 and y > 0) or (x < 0 and y < 0): 
+                    newy = newy * (-1)
+                if x < 0 and y > 0:  #2do Cuadrante
+                    newy = newy * (-1)
+                if x > 0 and y < 0:  #4to Cuadrante
+                    newx = newx * (-1)
+            if side == "RIGHT":
+                if (x > 0 and y > 0) or (x < 0 and y < 0): 
+                    newx = newx * (-1)
+                if x < 0 and y > 0:  #2do Cuadrante
+                    newx = newx * (-1)
+                if x > 0 and y < 0:  #4to Cuadrante
+                    newy = newy * (-1)
+            if side == "BACK":
+                newx = x
+                newy = y
+                if (x > 0 and y > 0) or (x < 0 and y < 0): 
+                    newx = newx*(-1)
+                    newy = newy*(-1)
+                if (x > 0 and y < 0) or (x < 0 and y > 0):
+                    newx = newx * (-1)
+                    newy = newy * (-1)                    
+                
+            return [newx,newy,newz]
+    else:
+        return [x,y,z]
 
 def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4,distance=0):
     '''
@@ -473,7 +482,6 @@ def join_images():
     holo = makeHologram(front,back,right,left,scale=1.0,scaleR=2.52)
     cv2.imwrite("figures/hologram.jpg",holo)
 
-
 def plot_qsphere_full(quantum_circuit):
     """
     Generate a jpg image of the qsphere hologram representation of a quantum state, generated by a quantum circuit.
@@ -497,9 +505,9 @@ def plot_qsphere_full(quantum_circuit):
 
         plot_state_qsphere_full(qc)
     """
-    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=True,lado="FRONT") # Generate front image
-    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,lado="BACK") # Generate back image
-    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,lado="LEFT") # Generate left image
-    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,lado="RIGHT") # Generate right image
+    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=True,side="FRONT") # Generate front image
+    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,side="BACK") # Generate back image
+    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,side="LEFT") # Generate left image
+    plot_state_qsphere_mod(quantum_circuit=quantum_circuit, show_state_labels=False,side="RIGHT") # Generate right image
     join_images()
 
