@@ -36,7 +36,7 @@ from scipy import linalg
 import cv2
 from math import floor
 
-################### This section corresponds to Qiskit's own libraries. ###################
+################### This section corresponds to code taken from qiskit.visualizations.state_visualization. ###################
 
 if HAS_MATPLOTLIB:
     from matplotlib import get_backend
@@ -114,6 +114,8 @@ def phase_to_rgb(complex_number):
     angles = (np.angle(complex_number) + (np.pi * 4)) % (np.pi * 2)
     rgb = colorsys.hls_to_rgb(angles / (np.pi * 2), 0.5, 0.5)
     return rgb
+
+################### This section corresponds to Qiskit code modified by the Qpi team. ###################
 
 def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_labels=True,
                        show_state_phases=False, use_degrees=False, *,side="FRONT"):
@@ -276,7 +278,7 @@ def plot_state_qsphere_mod(quantum_circuit, figsize=None, ax=None, show_state_la
                     ax.text(xvalue_text, yvalue_text, zvalue_text, element_text,
                             ha='center', va='center', size=12)
                     
-                
+                # Calculate the new x, y, and z values after rotation
                 news = rotate(xvalue, yvalue, zvalue, side)
                 xvalue = news[0]
                 yvalue = news[1]
@@ -356,7 +358,7 @@ def rotate(x,y,z,side="FRONT"):
     newy = x
     newz = z
     if side != "FRONT":
-        if x == 0.0 or y == 0.0:  #If x or y are cero it's because they're on the axis. Si x o y es cero es porque estan en el eje
+        if x == 0.0 or y == 0.0:  #If x or y are zero it's because they're on the axis.
             if side == "LEFT":
                 if y == 0:  newy = newy * (-1)
             if side == "RIGHT":
@@ -372,16 +374,16 @@ def rotate(x,y,z,side="FRONT"):
             if side == "LEFT":
                 if (x > 0 and y > 0) or (x < 0 and y < 0): 
                     newy = newy * (-1)
-                if x < 0 and y > 0:  #2do Cuadrante
+                if x < 0 and y > 0:  #2nd Quadrant
                     newy = newy * (-1)
-                if x > 0 and y < 0:  #4to Cuadrante
+                if x > 0 and y < 0:  #4th Quadrant
                     newx = newx * (-1)
             if side == "RIGHT":
                 if (x > 0 and y > 0) or (x < 0 and y < 0): 
                     newx = newx * (-1)
-                if x < 0 and y > 0:  #2do Cuadrante
+                if x < 0 and y > 0:  #2nd Quadrant
                     newx = newx * (-1)
-                if x > 0 and y < 0:  #4to Cuadrante
+                if x > 0 and y < 0:  #4th Quadrant
                     newy = newy * (-1)
             if side == "BACK":
                 newx = x
@@ -405,8 +407,8 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
             input_back (jpg, png, ...): back-side image
             input_right (jpg, png, ...): right-side image
             input_left (jpg, png, ...): left-side image
-            scale (float): scale up or down the images by this factor
-            scaleR (): 
+            scale (float): scale up or down each input image by this factor
+            scaleR (float): scales the size of the whole hologram
             distance (): 
 
         Returns: hologram as a numpy array
@@ -431,13 +433,9 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
     left = rotate_bound(input_left.copy(), 270)
     
     hologram = np.zeros([ int(max(input_front.shape)*scaleR+distance),int(max(input_front.shape)*scaleR+distance),3], input_front.dtype)
-    print("hologram",hologram.shape)
     center_x = floor((hologram.shape[0])/2)
     
     vert_x = floor((up.shape[0])/2)
-    print("up",up.shape)
-    print("vert_x",vert_x)
-    print("center_x",center_x)
     hologram[0:up.shape[0], center_x-vert_x+distance:center_x+vert_x+distance] = up
     hologram[ hologram.shape[1]-down.shape[1]:hologram.shape[1] , center_x-vert_x+distance:center_x+vert_x+distance] = down
    
@@ -448,27 +446,35 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
     return hologram
 
 def rotate_bound(image, angle):
-    # grab the dimensions of the image and then determine the
+    '''
+        Rotate an image clockwise by a certain angle (in degrees)
+        Args:
+            image (jpg, png, ...): image to be rotated
+            angle (degrees): rotation angle
+
+        Returns: 
+    '''
+    # Take the dimensions of the image and then determine the
     # center
     (h, w) = image.shape[:2]
     (cX, cY) = (w // 2, h // 2)
  
-    # grab the rotation matrix (applying the negative of the
-    # angle to rotate clockwise), then grab the sine and cosine
+    # Take the rotation matrix (applying the negative of the
+    # angle to rotate clockwise), then take the sine and cosine
     # (i.e., the rotation components of the matrix)
     M = cv2.getRotationMatrix2D((cX, cY), -angle, 1.0)
     cos = np.abs(M[0, 0])
     sin = np.abs(M[0, 1])
  
-    # compute the new bounding dimensions of the image
+    # Compute the new bounding dimensions of the image
     nW = int((h * sin) + (w * cos))
     nH = int((h * cos) + (w * sin))
  
-    # adjust the rotation matrix to take into account translation
+    # Adjust the rotation matrix to take into account translation
     M[0, 2] += (nW / 2) - cX
     M[1, 2] += (nH / 2) - cY
  
-    # perform the actual rotation and return the image
+    # Perform the actual rotation and return the image
     return cv2.warpAffine(image, M, (nW, nH))
    
 def join_images():
