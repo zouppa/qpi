@@ -399,7 +399,7 @@ def rotate(x,y,z,side="FRONT"):
     else:
         return [x,y,z]
 
-def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4,distance=0):
+def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4):
     '''
         Create 3D 4-sided hologram from 4 images (must have equal dimensions)
         Args:
@@ -409,7 +409,6 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
             input_left (jpg, png, ...): left-side image
             scale (float): scale up or down each input image by this factor
             scaleR (float): scales the size of the whole hologram
-            distance (): 
 
         Returns: hologram as a numpy array
     '''
@@ -432,16 +431,16 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
     right = rotate_bound(input_right.copy(), 90)
     left = rotate_bound(input_left.copy(), 270)
     
-    hologram = np.zeros([ int(max(input_front.shape)*scaleR+distance),int(max(input_front.shape)*scaleR+distance),3], input_front.dtype)
+    hologram = np.zeros([ int(max(input_front.shape)*scaleR),int(max(input_front.shape)*scaleR),3], input_front.dtype)
     center_x = floor((hologram.shape[0])/2)
     
     vert_x = floor((up.shape[0])/2)
-    hologram[0:up.shape[0], center_x-vert_x+distance:center_x+vert_x+distance] = up
-    hologram[ hologram.shape[1]-down.shape[1]:hologram.shape[1] , center_x-vert_x+distance:center_x+vert_x+distance] = down
+    hologram[0:up.shape[0], center_x-vert_x:center_x+vert_x] = up
+    hologram[ hologram.shape[1]-down.shape[1]:hologram.shape[1] , center_x-vert_x:center_x+vert_x] = down
    
     hori_x = floor((right.shape[0])/2)
-    hologram[ center_x-hori_x : center_x-hori_x+right.shape[0] , hologram.shape[1]-right.shape[0]+distance : hologram.shape[1]+distance] = right
-    hologram[ center_x-hori_x : center_x-hori_x+left.shape[0] , 0+distance : left.shape[0]+distance ] = left
+    hologram[ center_x-hori_x : center_x-hori_x+right.shape[0] , hologram.shape[1]-right.shape[0] : hologram.shape[1]] = right
+    hologram[ center_x-hori_x : center_x-hori_x+left.shape[0] , 0 : left.shape[0] ] = left
 
     return hologram
 
