@@ -399,6 +399,7 @@ def rotate(x,y,z,side="FRONT"):
     else:
         return [x,y,z]
 
+# This function was inspired by 3DHologram.py from Pyramid-Hologram-Generator: https://github.com/eokeeffe/Pyramid-Hologram-Generator/blob/master/3DHologram.py
 def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4):
     '''
         Create 3D 4-sided hologram from 4 images (must have equal dimensions)
@@ -444,6 +445,7 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
 
     return hologram
 
+# This function was inspired by 3DHologram.py from Pyramid-Hologram-Generator: https://github.com/eokeeffe/Pyramid-Hologram-Generator/blob/master/3DHologram.py
 def rotate_bound(image, angle):
     '''
         Rotate an image clockwise by a certain angle (in degrees)
