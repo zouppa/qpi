@@ -3,7 +3,7 @@
 # Part of this code was taken and modified from https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#plot_state_qsphere
 # This code is part of Qiskit.
 #
-# (C) Copyright IBM 2017, 2018, 2021.
+# (C) Copyright IBM 2017, 2018, 2021, 2022, 2023.
 #
 # This code is licensed under the Apache License, Version 2.0. You may
 # obtain a copy of this license in the LICENSE.txt file in the root directory
