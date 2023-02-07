@@ -8,7 +8,7 @@
 #   - https://qiskit.org/documentation/_modules/qiskit/visualization/state_visualization.html#phase_to_rgb
 # This code is part of Qiskit.
 #
-# (C) Copyright IBM 2017, 2018, 2021.
+# (C) Copyright IBM 2017, 2018, 2021, 2022, 2023.
 #
 # This code is licensed under the Apache License, Version 2.0. You may
 # obtain a copy of this license in the LICENSE.txt file in the root directory
@@ -345,9 +345,9 @@ def rotate(x,y,z,side="FRONT"):
 
     Returns:
         If side is not "FRONT":
-            nuevo x (float): new x-coordinate of point in the qsphere
-            nuevo y (float): new y-coordinate of point in the qsphere
-            nuevo z (float): new z-coordinate of point in the qsphere
+            newx (float): new x-coordinate of point in the qsphere
+            newy (float): new y-coordinate of point in the qsphere
+            newz (float): new z-coordinate of point in the qsphere
         Else if side is "FRONT":
             x (float): x-coordinate of current point in the qsphere
             y (float): y-coordinate of current point in the qsphere
@@ -400,7 +400,7 @@ def rotate(x,y,z,side="FRONT"):
         return [x,y,z]
 
 # This function was inspired by 3DHologram.py from Pyramid-Hologram-Generator: https://github.com/eokeeffe/Pyramid-Hologram-Generator/blob/master/3DHologram.py
-def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=4):
+def makeHologram(input_front,input_back,input_right,input_left,scale,scaleR):
     '''
         Create 3D 4-sided hologram from 4 images (must have equal dimensions)
         Args:
@@ -427,11 +427,13 @@ def makeHologram(input_front,input_back,input_right,input_left,scale=0.5,scaleR=
     input_right = cv2.resize(input_right, (width, height), interpolation = cv2.INTER_CUBIC)
     input_left = cv2.resize(input_left, (width, height), interpolation = cv2.INTER_CUBIC)
     
+    # The front and back in the hologram image are mapped to up and down in the generated image. Front is up, and down is the back.
     up = input_front.copy()
     down = rotate_bound(input_back.copy(),180)
     right = rotate_bound(input_right.copy(), 90)
     left = rotate_bound(input_left.copy(), 270)
     
+    # The initial background hologram is created by Numpy zeros to be black. This improves the visual of the sphere.
     hologram = np.zeros([ int(max(input_front.shape)*scaleR),int(max(input_front.shape)*scaleR),3], input_front.dtype)
     center_x = floor((hologram.shape[0])/2)
     
@@ -481,12 +483,13 @@ def rotate_bound(image, angle):
 def join_images():
     # Joins the 4 images of the 4 sides, previously exported into the figures folder, into a single jpg image called hologram.
     # Returns: "hologram.jpg" image in the figures folder
-
+    
+    # The final image will be generated in the current path under the folder figures. Please make sure that the visualization script that uses feh points to the same path and file name as the hologram.jpg
     front = cv2.imread("figures/FRONT.jpg")
     back = cv2.imread("figures/BACK.jpg")
     right = cv2.imread("figures/RIGHT.jpg")
     left = cv2.imread("figures/LEFT.jpg")
-    holo = makeHologram(front,back,right,left,scale=1.0,scaleR=2.52)
+    holo = makeHologram(front, back, right, left, scale=1.0, scaleR=2.52)
     cv2.imwrite("figures/hologram.jpg",holo)
 
 def plot_qsphere_full(quantum_circuit):
