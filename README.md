@@ -43,6 +43,9 @@ In this tutorial we will
 - [Set up JupyterHub as a system service](#set-up-jupyterhub-as-a-system-service)
 - [Create the auto start script](#create-the-auto-start-script)
 - <span style="color:red"> *Optional* </span>  [Configure the Raspberry Pi as an Access point](#configure-the-raspberry-pi-as-an-access-point)
+- [Installing and running QPi](#installing-and-running-qpi)
+
+
 
 This tutorial have been created and tested on the following versions:
 
@@ -73,7 +76,7 @@ This tutorial is inspired, and use the knowledge from :
     ```
 1. Create a swap space of 1 GB. 
 
-As some of the compilation and installation tasks require more than the 512 MB of RAM that are available on smaller Raspberry Pi models, we increase the swap space to 1 GB. The size of the configured swap space can be checked with free -m.
+    As some of the compilation and installation tasks require more than the 512 MB of RAM that are available on smaller Raspberry Pi models, we increase the swap space to 1 GB. The size of the configured swap space can be checked with free -m.
 
     ```sh
     pi@qpi:~ $ sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/' /etc/dphys-swapfile
@@ -83,7 +86,7 @@ As some of the compilation and installation tasks require more than the 512 MB o
 
 1. <span style="color:red"> *Optional* </span>  Installing and configuring the screen
 
- Some screen have very specific resolution and features (like touch screen, controlling the brightness etc.) and need to have specific drivers to enable those features.
+    Some screen have very specific resolution and features (like touch screen, controlling the brightness etc.) and need to have specific drivers to enable those features.
     Please refer to the tutorial related to your screen manufacturer. In our case we are using a 5-inch HDMI capacitive screen. 
     ```sh
     pi@qpi:~ $ git clone https://github.com/goodtft/LCD-show.git
@@ -92,14 +95,14 @@ As some of the compilation and installation tasks require more than the 512 MB o
     ```
 1. Disable the screen save 
 
-When using the QPi usually we interact with it remotely using the Jupyter Notebook and feh to display the QSphere. As a result, after a certain time of using the QPi, the screen may go dark or start using the screensaver. To avoid that, we recommend disabling the screensaver and screen blanking.
+    When using the QPi usually we interact with it remotely using the Jupyter Notebook and feh to display the QSphere. As a result, after a certain time of using the QPi, the screen may go dark or start using the screensaver. To avoid that, we recommend disabling the screensaver and screen blanking.
 
     Please find here different ways to [disable the screensaver](https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-screen-blanking) 
 
 
 1. Configure the RPI to use Python 3 
 
-Qiskit supports Python 3.7 or later
+    Qiskit supports Python 3.7 or later
 
     ```sh
     pi@qpi:~ $ sudo rm /usr/bin/python 
@@ -107,7 +110,7 @@ Qiskit supports Python 3.7 or later
     ```
 1. Install and upgrade the python package manager pip
 
-Pip is the package installer / manager for Python. We will need to install and update needed software like : notebook, jupyterHub, setuptools-rust, pyscf, cython ect. You can identify all the dependencies that pip support us to install by searching "pip3 install" in this tutorial.
+    Pip is the package installer / manager for Python. We will need to install and update needed software like : notebook, jupyterHub, setuptools-rust, pyscf, cython ect. You can identify all the dependencies that pip support us to install by searching "pip3 install" in this tutorial.
 
     ```sh
     pi@qpi:~ $ sudo apt-get install python3-pip 
@@ -119,7 +122,7 @@ Pip is the package installer / manager for Python. We will need to install and u
 
 1. Install Node JS and the Proxy 
 
-To be able to run Jupyter hub, we need a proxy that routes the user requests to the hub and the notebook servers. In this tutorial, we will use [configurable-http-proxy](https://www.npmjs.com/package/configurable-http-proxy) that run on [NodeJS](https://nodejs.org/)
+    To be able to run Jupyter hub, we need a proxy that routes the user requests to the hub and the notebook servers. In this tutorial, we will use [configurable-http-proxy](https://www.npmjs.com/package/configurable-http-proxy) that run on [NodeJS](https://nodejs.org/)
 
     ```sh
     pi@qpi:~ $ sudo su
@@ -134,7 +137,7 @@ To be able to run Jupyter hub, we need a proxy that routes the user requests to 
     ```
 1. Install Jupyter Notebook and JupyterHub
 
-In the QPi project, we use the main screen of the device to display a projection of a QSphere. As a result, the only way to interact with the QPi (a part of having a second screen) will be remotely. Since Qiskit is based on python, and most of it is tutorials uses Jupyter notebook, we wanted this project to have a familiar interface and allow anyone to easily start experimenting with Quantum computing and Qiskit. Having this set of tools will allow the user to access a jupyter notebook in his personal device (laptop/smartphone), create a circuit and watch the QPi display it as a hologram.  
+    In the QPi project, we use the main screen of the device to display a projection of a QSphere. As a result, the only way to interact with the QPi (a part of having a second screen) will be remotely. Since Qiskit is based on python, and most of it is tutorials uses Jupyter notebook, we wanted this project to have a familiar interface and allow anyone to easily start experimenting with Quantum computing and Qiskit. Having this set of tools will allow the user to access a jupyter notebook in his personal device (laptop/smartphone), create a circuit and watch the QPi display it as a hologram.  
 
     ```sh
     pi@qpi:~ $ sudo -H pip3 install notebook jupyterhub
@@ -154,7 +157,6 @@ In the QPi project, we use the main screen of the device to display a projection
     ```
 
 ### Install Qiskit and feh
-
 The main idea of the QPi project is to be abe to use your personal device to connect to the QPi. Open a Jupyter notebook remotely, and allow the user to create any Quantum circuit and visualize its QSphere as a hologram projection. To be able to do that, we have created a python library that when used will create an image composed by 4 different views of the Qsphere and save it with a specific name in a specific folder. We then use feh a lightweight image viewer to display this image with a specified refresh rate (in this tutorial we use 1 second). To have a good user experience, we recommend running feh at startup.
 
 1. Manual installation of some [dependencies for Qiskit](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133#acc1) 
@@ -196,7 +198,7 @@ The main idea of the QPi project is to be abe to use your personal device to con
     ```
 1. ### Set up JupyterHub as a system service
 
-Setting up JupyterHub as a service will allow us to start it automatically
+    Setting up JupyterHub as a service will allow us to start it automatically
 
     ```sh
     pi@qpi:~/qpi/libcint/build $ sudo nano /lib/systemd/system/jupyterhub.service
@@ -262,7 +264,7 @@ Setting up JupyterHub as a service will allow us to start it automatically
 
 1. ### Create the auto start script 
 
-This script will auto start feh when the QPi start. for more details about that, please refer to [Install Qiskit and feh](#install-qiskit-and-feh)
+    This script will auto start feh when the QPi start. for more details about that, please refer to [Install Qiskit and feh](#install-qiskit-and-feh)
 
     create the folder 
 
@@ -307,18 +309,19 @@ This script will auto start feh when the QPi start. for more details about that,
     Type ctrl + x, then Y and enter to save the file and exit
 
 <span style="color:red"> *Optional* </span>
+
 ### Configure the Raspberry Pi as an Access point 
+In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
-    In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
+<span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
 
-    <span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
+We used [RaspAP](https://raspap.com)
 
-    We used [RaspAP](https://raspap.com)
-
-    In case you did not already set up a Wi-Fi country, please run 
+1. In case you did not already set up a Wi-Fi country, please run 
     ```sh
     sudo raspi-config
     ```
+    
     And navigate to 1 System Options -> S1 Wireless LAN and you will prompt to select a country. After that just cancel 
 
     Installing RaspAP
@@ -361,6 +364,8 @@ This script will auto start feh when the QPi start. for more details about that,
     http://[Your Pi hostname or IP address]:8080
 
     You can also change the SSID of you raspberry Pi, for more details please refer to [RaspAP](https://raspap.com) 
+
+### Installing and running QPi
 
 1. Installing QPi Library
 
