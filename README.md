@@ -422,7 +422,7 @@ We used [RaspAP](https://raspap.com)
     ```
 # For more information, please feel free to check the following links:
 
-- [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb) : step by step guide to build your own QPi
+- [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb) : a step-by-step guide to building your  QPi
 - [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) : contains examples to start using your QPi
 
 # Please feel free to reach out to the team:
