@@ -42,7 +42,6 @@ In this tutorial we will
 - [Install Qiskit and feh](#install-qiskit-and-feh)
 - [Set up JupyterHub as a system service](#set-up-jupyterhub-as-a-system-service)
 - [Create the auto start script](#create-the-auto-start-script)
-- <span style="color:red"> *Optional* </span>  [Configure the Raspberry Pi as an Access point](#configure-the-raspberry-pi-as-an-access-point)
 - [Installing and running QPi](#installing-and-running-qpi)
 
 
@@ -308,9 +307,8 @@ The main idea of the QPi project is to be abe to use your personal device to con
     ```
     Type ctrl + x, then Y and enter to save the file and exit
 
-<span style="color:red"> *Optional* </span>
+<span style="color:red"> *Optional* </span> Configure the Raspberry Pi as an Access point 
 
-### Configure the Raspberry Pi as an Access point 
 In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
 <span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
@@ -324,24 +322,24 @@ We used [RaspAP](https://raspap.com)
     
     And navigate to 1 System Options -> S1 Wireless LAN and you will prompt to select a country. After that just cancel 
 
-    Installing RaspAP
+1. Installing RaspAP
 
     ```sh
     pi@qpi:~ $ curl -sL https://install.raspap.com | bash
     ```
     Answer Y to all the question
 
-    Go to http://[Your Pi hostname or IP address]
+1. Go to http://[Your Pi hostname or IP address]
 
     The default username and password are
     - Username : admin 
     - Password : secret
 
-    Use the web interface to change them and save
+1. Use the web interface to change them and save
 
    ![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/rapap.png)
 
-    To change the port of RaspAp run  
+1. To change the port of RaspAp run  
 
     ```sh
     pi@qpi:~ $ sudo nano /etc/lighttpd/lighttpd.conf
@@ -360,7 +358,7 @@ We used [RaspAP](https://raspap.com)
     ```sh
     pi@qpi:~ $ sudo reboot
     ```
-    Verify that the changes to the port and credential worked by accessing 
+1. Verify that the changes to the port and credential worked by accessing 
     http://[Your Pi hostname or IP address]:8080
 
     You can also change the SSID of you raspberry Pi, for more details please refer to [RaspAP](https://raspap.com) 
@@ -399,7 +397,7 @@ We used [RaspAP](https://raspap.com)
     warnings.filterwarnings('ignore')
     ```
 
-    Create a circuit and draw it 
+1. Create a circuit and draw it 
 
 
     ```python
@@ -417,15 +415,15 @@ We used [RaspAP](https://raspap.com)
 
     qc.draw(output='mpl')
     ```
-    To visualize any circuit on the QPi you can run 
+1. To visualize any circuit on the QPi you can run 
 
     ```python
     qsphere_funcs.plot_qsphere_full(qc)
     ```
-# Please feel free to check Introduction to Qpi so you can build your own and Quantum Operations with Qpi for a guide in your firsts circuits!
+# Please feel free to check the following links:
 
-- [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb)
-- [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) 
+- [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb) : step by step guide to build your own QPi
+- [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) : That contains examples to start using your QPi
 
 # Please feel free to reach out to the team:
 
