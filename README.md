@@ -307,7 +307,7 @@ The main idea of the QPi project is to be abe to use your personal device to con
     ```
     Type ctrl + x, then Y and enter to save the file and exit
 
-<span style="color:red"> *Optional* </span> Configure the Raspberry Pi as an Access point 
+### <span style="color:red"> *Optional* </span> Configure the Raspberry Pi as an Access point 
 
 In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
 
@@ -420,12 +420,12 @@ We used [RaspAP](https://raspap.com)
     ```python
     qsphere_funcs.plot_qsphere_full(qc)
     ```
-# For more information, please feel free to check the following links:
+# For more information, feel free to check the following links:
 
 - [Introduction to Qpi](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb) : a step-by-step guide to building your  QPi
 - [Quantum Operations with Qpi](https://github.com/zouppa/qpi/blob/main/Quantum_Operations_with_QPi.ipynb) : contains examples to start using your QPi
 
-# Please feel free to reach out to the team:
+# Feel free to reach out to the team:
 
 - [Zouppa : Mohamed Zouhaier Ramadhane](https://www.linkedin.com/in/zouppa)
 
