@@ -24,11 +24,11 @@ To build a QPi you will need:
 
 ## Features
 
-- Visualize QSphere in 3 dimensions (with 4 views)
+- Visualize QSphere in three dimensions (with four views)
 - Wi-Fi Access point to allow you to use it in unknown territory (without internet connection)
 
 ## Get Started 
-You can get QPi in 2 different ways
+You can get QPi in two different ways
 
 - Follow the Tutorial to install it yourself
 - Contact us to provide you with the ready to use image and write it in the SD	
@@ -46,7 +46,7 @@ In this tutorial we will
 
 
 
-This tutorial have been created and tested on the following versions:
+This tutorial has been created and tested on the following versions:
 
 - Operating System : Raspbian GNU/Linux 10 (buster)
 - Python 3.7.3
@@ -85,7 +85,7 @@ This tutorial is inspired, and use the knowledge from :
 
 1. <span style="color:red"> *Optional* </span>  Installing and configuring the screen
 
-    Some screen have very specific resolution and features (like touch screen, controlling the brightness etc.) and need to have specific drivers to enable those features.
+    Some screens have very specific resolution and features (like touch screen, controlling the brightness etc.) and need to have specific drivers to enable those features.
     Please refer to the tutorial related to your screen manufacturer. In our case we are using a 5-inch HDMI capacitive screen. 
     ```sh
     pi@qpi:~ $ git clone https://github.com/goodtft/LCD-show.git
@@ -156,7 +156,7 @@ This tutorial is inspired, and use the knowledge from :
     ```
 
 ### Install Qiskit and feh
-The main idea of the QPi project is to be abe to use your personal device to connect to the QPi. Open a Jupyter notebook remotely, and allow the user to create any Quantum circuit and visualize its QSphere as a hologram projection. To be able to do that, we have created a python library that when used will create an image composed by 4 different views of the Qsphere and save it with a specific name in a specific folder. We then use feh a lightweight image viewer to display this image with a specified refresh rate (in this tutorial we use 1 second). To have a good user experience, we recommend running feh at startup.
+The main idea of the QPi project is to be abe to use your personal device to connect to the QPi. Open a Jupyter notebook remotely, and allow the user to create any Quantum circuit and visualize its QSphere as a hologram projection. To be able to do that, we have created a python library that when used will create an image composed by four different views of the Qsphere and save it with a specific name in a specific folder. We then use feh a lightweight image viewer to display this image with a specified refresh rate (in this tutorial we use one second). To have a good user experience, we recommend running feh at startup.
 
 1. Manual installation of some [dependencies for Qiskit](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133#acc1) 
     ```sh
