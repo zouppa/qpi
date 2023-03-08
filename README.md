@@ -1,16 +1,26 @@
 # QPI
-## _Using Holo to better understand Quantum_
+## _A Holo visualization of the QSphere to help Quantum Programing with Qiskit learning_
 
+QPi is an implementation of the Qiskit platform meant to facilitate learning by visualizing the Qsphere from different views.  With QPi you can: 
 
+- Visualise QSphere in 3 dimentions (with four views)
+- Run any Qiskit textbook and see the resulting Qsphere in 3 dimentions (with 4 views)
+- Wifi Access point to allow you to use it in unknown territory (without internet connection)
 
-Please feel free to watch the [demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)
+You can see examples of the Qsphere visualization in the [Introduction to QPi notebook](https://github.com/zouppa/qpi/blob/main/Introduction_to_QPI.ipynb), or watch the [demo video](https://youtu.be/BiD5429jMis) and the [assembly video](https://youtu.be/lVraOgavMDs)   
 
 You can download the ready to use [disk image](https://zouppa.com/qpi/Qpi_1.0_C.zip)
 
 <!--[![N|Solid](https://github.com/zouppa/qpi/blob/main/resources/down.png)](https://github.com/zouppa/qpi/blob/main/resources/down.png)-->
 
 
-QPi is an implementation of the Qiskit platform meant to facilitate learning by visualizing the Qsphere from different views.
+QPi is an implementation of the Qiskit platform meant to facilitate learning by visualizing the Qsphere from different views, If you want to know a little more about the history of the project, please check the [publication](https://medium.com/qiskit/if-a-picture-is-worth-1000-words-what-about-a-superposition-of-4-images-b307b634b85)
+
+## Get Started 
+You can get QPi in two different ways: 
+
+- Follow the [tutorial](#installation-tutorial) to install it yourself.
+- Download the ready to use [disk image](https://zouppa.com/qpi/Qpi_1.0_C.zip) and write it in the SD 
 
 To build a QPi you will need:
 
@@ -21,18 +31,6 @@ To build a QPi you will need:
 - Ready to use holo pyramid (or you can build your own) [Like This one](https://www.aliexpress.com/item/1005003088437355.html)
 - [Optional] Raspberry Pi Battery Hat : in case you want to use the QPi anywhere without the need to connect it to a power source
 - ✨Magic ✨
-
-## Features
-
-- Visualize QSphere in three dimensions (with four views)
-- Wi-Fi Access point to allow you to use it in unknown territory (without internet connection)
-
-## Get Started 
-You can get QPi in two different ways
-
-- Follow the Tutorial to install it yourself
-- Contact us to provide you with the ready to use image and write it in the SD	
-
 
 ## Installation Tutorial 
 
@@ -53,15 +51,15 @@ This tutorial has been created and tested on the following versions:
 - Qiskit 0.26.2
 
 
-This tutorial is inspired, and use the knowledge from : 
+This tutorial is inspired, and uses knowledge from:
 
 - [RasQberry: Quantum Computing is the Coolest Project for Raspberry](https://medium.com/qiskit/rasqberry-quantum-computing-is-the-coolest-project-for-raspberry-pi-3f64bec5a133)
 - [Setup your home JupyterHub on a Raspberry Pi](https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed)
 - [Install Qiskit](#install-qiskit)
 
-### install Raspberry Pi OS
+### Install Raspberry Pi OS
 
-1. Download Raspberry [pi Imager](https://www.raspberrypi.org/software/), Install Raspberry OS, and access it via ssh. More information can be found here :
+1. Download Raspberry [pi Imager](https://www.raspberrypi.org/software/), Install Raspberry OS, and access it via ssh. More information can be found here:
 
     -[Getting Started](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started) 
 
@@ -92,7 +90,7 @@ This tutorial is inspired, and use the knowledge from :
     pi@qpi:~ $ cd LCD-show/
     pi@qpi:~ $ sudo ./LCD5-show
     ```
-1. Disable the screen save 
+1. Disable the screen saver 
 
     When using the QPi usually we interact with it remotely using the Jupyter Notebook and feh to display the QSphere. As a result, after a certain time of using the QPi, the screen may go dark or start using the screensaver. To avoid that, we recommend disabling the screensaver and screen blanking.
 
@@ -309,7 +307,7 @@ The main idea of the QPi project is to be abe to use your personal device to con
 
 ### <span style="color:red"> *Optional* </span> Configure the Raspberry Pi as an Access point 
 
-In case you are connected to your RPi through ethernet and want to enable it as an access point to be able to use QPi even when without internet.
+To use QPi without an internet connection, you can enable it as access point and connect via an Ethernet cable. 
 
 <span style="color:red"> *Important* </span>  If your raspberry pi is connected to your network via Wi-Fi, you will need an additional USB Wi-Fi interface, otherwise you may lose connection to your raspberry through your LAN.
 
