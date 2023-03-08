@@ -1,5 +1,4 @@
-# QPI
-## _A Holo visualization of the QSphere to help Quantum Programing with Qiskit learning_
+## _QPI: A Holo visualization of the QSphere to help Quantum Programing with Qiskit learning_
 
 QPi is an implementation of the Qiskit platform meant to facilitate learning by visualizing the Qsphere from different views.  With QPi you can: 
 
