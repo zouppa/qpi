@@ -433,3 +433,5 @@ We used [RaspAP](https://raspap.com)
 - [Ana Vialeny Mota Gómez](https://www.linkedin.com/in/vialeny)
 
 - [Jaime Jesús Ambrosio Mallqui](https://www.linkedin.com/in/jaime-ambrosio)
+
+This site is the result of the IBM Academy of Technology Initiative “Document and Publish the QPi Project”, report ARB-1328. For more information see the [Initiative eCard](https://w3.ibm.com/ibm/academy/ecard/61f1ba8e2af774001fc867a9).
